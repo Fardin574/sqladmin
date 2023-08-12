@@ -893,7 +893,7 @@ class ModelView(BaseView, metaclass=ModelViewMeta):
 
     def get_prop_value(self, obj: Any, prop: str) -> Any:
         result = getattr(obj, prop, None)
-        if result and isinstance(result, Enum):
+        if isinstance(result, Enum):
             result = result.name
 
         return result
