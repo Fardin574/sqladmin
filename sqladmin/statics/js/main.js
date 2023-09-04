@@ -51,6 +51,17 @@ $(document).on('keypress', '#search-input', function (e) {
   }
 });
 
+// Init a timeout variable to be used below
+var timeout = null;
+// Search
+$(document).on('keyup', '#search-input', function (e) {
+  clearTimeout(timeout);
+  // Make a new timeout set to go off in 1000ms (1 second)
+  timeout = setTimeout(function () {
+    $('#search-button').click();
+  }, 1000);  
+});
+
 // Date picker
 $(':input[data-role="datepicker"]:not([readonly])').each(function () {
   $(this).flatpickr({
@@ -68,18 +79,6 @@ $(':input[data-role="datetimepicker"]:not([readonly])').each(function () {
     enableSeconds: true,
     time_24hr: true,
     dateFormat: "Y-m-d H:i:s",
-  });
-});
-
-// Time picker
-$(':input[data-role="timepicker"]:not([readonly])').each(function () {
-  $(this).flatpickr({
-    noCalendar: true,
-    enableTime: true,
-    allowInput: true,
-    enableSeconds: true,
-    time_24hr: true,
-    dateFormat: "H:i:s",
   });
 });
 
